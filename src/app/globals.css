@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+/* 
+ * Custom responsive breakpoints matching Figma designs:
+ * - Mobile: Base styles (0px - 639px) - Figma design width: 440px
+ * - Tablet: sm breakpoint (640px - 989px) - Figma design width: 990px  
+ * - Desktop: lg breakpoint (990px+) - Figma design width: 1440px
+ */
+@theme inline {
+  /* Color tokens */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  /* Font tokens */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  /* Custom breakpoints matching Figma layouts */
+  --breakpoint-sm: 640px;   /* Tablet starts here */
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 990px;   /* Desktop starts here */
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px; /* Max container width */
+  
+  /* Container max widths matching Figma */
+  --container-mobile: 440px;
+  --container-tablet: 990px;
+  --container-desktop: 1440px;
+  
+  /* Responsive spacing */
+  --spacing-container-mobile: 20px;
+  --spacing-container-tablet: 40px;
+  --spacing-container-desktop: 80px;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+}
+
+/* Selection styles */
+::selection {
+  background-color: var(--foreground);
+  color: var(--background);
+}
