@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#f0efea]">
       {/* Simple centered navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#f0efea] pt-[30px] pb-[10px]">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#f0efea] pt-[20px] pb-[10px]">
         <div className="flex items-center justify-center gap-[86px] font-normal text-2xl text-black">
           <a href="#work" className="hover:opacity-70 transition-opacity">
             Work
@@ -17,7 +17,7 @@ export default function Home() {
       </nav>
 
       {/* Main content area */}
-      <main className="pt-[89px] min-h-screen">
+      <main className="pt-[79px] min-h-screen">
         {/* Content will go here */}
       </main>
     </div>
