@@ -5,8 +5,8 @@ export default function Home() {
     <div className="min-h-screen bg-[#f0efea]">
       <Header />
       
-      {/* Main content area - empty for now, matching Figma */}
-      <main className="pt-[50px]">
+      {/* Main content area - adjust padding to account for larger header */}
+      <main className="pt-[89px]">
         {/* Content will go here */}
       </main>
     </div>
