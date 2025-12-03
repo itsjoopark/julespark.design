@@ -10,16 +10,15 @@ export default function Header() {
 
   return (
     <>
-      {/* Navigation Bar - matching Figma design */}
+      {/* Navigation Bar - Responsive across all breakpoints */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#f0efea]">
-        <div className="w-full max-w-[1440px] mx-auto px-[50px] pt-[30px] pb-[10px] flex items-start gap-[10px]">
-          {/* Logo */}
+        {/* Desktop (1440px) */}
+        <div className="hidden lg:flex w-full max-w-[1440px] mx-auto px-[50px] pt-[30px] pb-[10px] items-start gap-[10px]">
           <Link href="/" className="shrink-0">
             <Logo className="w-[60px] h-[49px]" />
           </Link>
 
-          {/* Desktop/Tablet Navigation Container */}
-          <div className="hidden sm:flex flex-1 items-center self-stretch py-[10px]">
+          <div className="flex flex-1 items-center self-stretch py-[10px]">
             <nav className="flex-1 flex items-center justify-center">
               <div className="flex items-center gap-[86px] font-normal text-2xl text-black">
                 <Link href="#work" className="hover:opacity-70 transition-opacity whitespace-nowrap">
@@ -35,22 +34,57 @@ export default function Header() {
             </nav>
           </div>
 
-          {/* Say hello button - Desktop/Tablet */}
           <a
             href="mailto:hello@julespark.design"
-            className="hidden sm:flex items-center justify-center w-[98px] h-[49px] px-[10px] py-[8px] bg-black text-white text-xs rounded-[20px] border border-black hover:opacity-90 transition-opacity shrink-0"
+            className="flex items-center justify-center w-[98px] h-[49px] px-[10px] py-[8px] bg-black text-white text-xs rounded-[20px] border border-black hover:opacity-90 transition-opacity shrink-0"
           >
             Say hello
           </a>
+        </div>
 
-          {/* Mobile Menu Button */}
+        {/* Tablet (640-989px) */}
+        <div className="hidden sm:flex lg:hidden w-full max-w-[990px] mx-auto px-[50px] pt-[30px] pb-[10px] items-start gap-[10px]">
+          <Link href="/" className="shrink-0">
+            <Logo className="w-[60px] h-[49px]" />
+          </Link>
+
+          <div className="flex flex-1 items-center self-stretch py-[10px]">
+            <nav className="flex-1 flex items-center justify-center">
+              <div className="flex items-center gap-[86px] font-normal text-2xl text-black">
+                <Link href="#work" className="hover:opacity-70 transition-opacity whitespace-nowrap">
+                  Work
+                </Link>
+                <Link href="#about" className="hover:opacity-70 transition-opacity whitespace-nowrap">
+                  About
+                </Link>
+                <Link href="/resume" className="hover:opacity-70 transition-opacity whitespace-nowrap">
+                  Resume
+                </Link>
+              </div>
+            </nav>
+          </div>
+
+          <a
+            href="mailto:hello@julespark.design"
+            className="flex items-center justify-center w-[98px] h-[49px] px-[10px] py-[8px] bg-black text-white text-xs rounded-[20px] border border-black hover:opacity-90 transition-opacity shrink-0"
+          >
+            Say hello
+          </a>
+        </div>
+
+        {/* Mobile (<640px) */}
+        <div className="sm:hidden w-full max-w-[440px] mx-auto px-[50px] pt-[30px] pb-[10px] flex items-start gap-[10px] relative">
+          <Link href="/" className="shrink-0">
+            <Logo className="w-[60px] h-[49px]" />
+          </Link>
+
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="sm:hidden ml-auto p-0 bg-transparent border-none cursor-pointer self-center"
+            className="absolute right-[19px] top-[15px] p-0 bg-transparent border-none cursor-pointer"
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
           >
-            <MenuIcon />
+            <MenuIcon className="w-[20px] h-[20px]" />
           </button>
         </div>
       </header>
