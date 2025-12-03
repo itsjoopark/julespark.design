@@ -1,93 +1,92 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import Logo from "./Logo";
+import MenuIcon from "./MenuIcon";
 
-interface HeaderProps {
-  className?: string;
-}
+export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-export default function Header({ className = "" }: HeaderProps) {
   return (
-    <header
-      className={`w-full py-6 lg:py-8 ${className}`}
-    >
-      <div className="w-full mx-auto px-5 sm:px-10 lg:px-20 max-w-[1440px]">
-        <nav className="flex items-center justify-between">
-          {/* Logo / Name */}
-          <Link 
-            href="/" 
-            className="text-lg lg:text-xl font-medium hover:opacity-70 transition-opacity"
-          >
-            Jules Park
+    <>
+      {/* Navigation Bar */}
+      <header className="fixed top-0 left-0 right-0 z-50 h-[50px] px-5 py-[15px] flex items-center">
+        <div className="w-full max-w-[1440px] mx-auto flex items-center">
+          {/* Logo */}
+          <Link href="/" className="shrink-0">
+            <Logo />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
-            <Link 
-              href="/work" 
-              className="text-sm hover:opacity-70 transition-opacity"
-            >
-              Work
-            </Link>
-            <Link 
-              href="/about" 
-              className="text-sm hover:opacity-70 transition-opacity"
-            >
-              About
-            </Link>
-            <Link 
-              href="/contact" 
-              className="text-sm hover:opacity-70 transition-opacity"
-            >
-              Contact
-            </Link>
-          </div>
+          {/* Desktop/Tablet Navigation - centered */}
+          <nav className="hidden sm:flex flex-1 items-center justify-center">
+            <div className="flex items-center gap-[86px] font-normal text-xs text-black">
+              <Link href="#work" className="hover:opacity-70 transition-opacity">
+                Work
+              </Link>
+              <Link href="#about" className="hover:opacity-70 transition-opacity">
+                About
+              </Link>
+              <Link href="/resume" className="hover:opacity-70 transition-opacity">
+                Resume
+              </Link>
+            </div>
+          </nav>
 
-          {/* Tablet Navigation */}
-          <div className="hidden sm:flex lg:hidden items-center gap-6">
-            <Link 
-              href="/work" 
-              className="text-sm hover:opacity-70 transition-opacity"
-            >
-              Work
-            </Link>
-            <Link 
-              href="/about" 
-              className="text-sm hover:opacity-70 transition-opacity"
-            >
-              About
-            </Link>
-            <Link 
-              href="/contact" 
-              className="text-sm hover:opacity-70 transition-opacity"
-            >
-              Contact
-            </Link>
-          </div>
+          {/* Say hello button - Desktop/Tablet */}
+          <a
+            href="mailto:hello@julespark.design"
+            className="hidden sm:flex items-center justify-center px-[10px] py-[8px] bg-black text-white text-xs rounded-[20px] border border-black hover:opacity-90 transition-opacity shrink-0"
+          >
+            Say hello
+          </a>
 
           {/* Mobile Menu Button */}
           <button
-            className="sm:hidden p-2 -mr-2 hover:opacity-70 transition-opacity"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="sm:hidden ml-auto p-0 bg-transparent border-none cursor-pointer"
             aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
+            <MenuIcon />
           </button>
-        </nav>
-      </div>
-    </header>
+        </div>
+      </header>
+
+      {/* Mobile Dropdown Menu */}
+      {isMenuOpen && (
+        <div className="fixed top-[58px] left-0 right-0 z-40 sm:hidden">
+          <div className="w-full max-w-[440px] mx-auto flex flex-col items-center gap-[25px] p-[10px]">
+            <Link
+              href="#work"
+              onClick={() => setIsMenuOpen(false)}
+              className="font-normal text-xs text-black hover:opacity-70 transition-opacity"
+            >
+              Work
+            </Link>
+            <Link
+              href="#about"
+              onClick={() => setIsMenuOpen(false)}
+              className="font-normal text-xs text-black hover:opacity-70 transition-opacity"
+            >
+              About
+            </Link>
+            <Link
+              href="/resume"
+              onClick={() => setIsMenuOpen(false)}
+              className="font-normal text-xs text-black hover:opacity-70 transition-opacity"
+            >
+              Resume
+            </Link>
+            <a
+              href="mailto:hello@julespark.design"
+              className="flex items-center justify-center px-[10px] py-[8px] bg-black text-white text-xs rounded-[20px] border border-black hover:opacity-90 transition-opacity"
+            >
+              Say hello
+            </a>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
-
