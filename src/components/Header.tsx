@@ -21,6 +21,9 @@ export default function Header() {
           {/* Desktop/Tablet Navigation - centered absolutely */}
           <nav className="hidden sm:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <div className="flex items-center gap-[86px] font-normal text-xs text-black">
+              <Link href="#work" className="hover:opacity-70 transition-opacity">
+                Work
+              </Link>
               <Link href="#about" className="hover:opacity-70 transition-opacity">
                 About
               </Link>
@@ -54,6 +57,13 @@ export default function Header() {
       {isMenuOpen && (
         <div className="fixed top-[58px] left-0 right-0 z-40 sm:hidden">
           <div className="w-full max-w-[440px] mx-auto flex flex-col items-center gap-[25px] p-[10px]">
+            <Link
+              href="#work"
+              onClick={() => setIsMenuOpen(false)}
+              className="font-normal text-xs text-black hover:opacity-70 transition-opacity"
+            >
+              Work
+            </Link>
             <Link
               href="#about"
               onClick={() => setIsMenuOpen(false)}
