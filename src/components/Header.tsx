@@ -11,10 +11,10 @@ export default function Header() {
   return (
     <>
       {/* Navigation Bar */}
-      <header className="fixed top-0 left-0 right-0 z-50 h-[50px] px-5 py-[15px] flex items-center">
-        <div className="w-full max-w-[1440px] mx-auto flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="shrink-0">
+      <header className="fixed top-0 left-0 right-0 z-50 h-[50px] flex items-center px-5">
+        <div className="w-full max-w-[1440px] mx-auto flex items-center justify-between relative">
+          {/* Logo - with extra left padding */}
+          <Link href="/" className="shrink-0 pl-4">
             <Logo />
           </Link>
 
@@ -33,18 +33,18 @@ export default function Header() {
             </div>
           </nav>
 
-          {/* Say hello button - Desktop/Tablet */}
+          {/* Say hello button - Desktop/Tablet with extra right padding */}
           <a
             href="mailto:hello@julespark.design"
-            className="hidden sm:flex items-center justify-center px-[10px] py-[8px] bg-black text-white text-2xl rounded-[20px] border border-black hover:opacity-90 transition-opacity shrink-0"
+            className="hidden sm:flex items-center justify-center px-[10px] py-[8px] bg-black text-white text-2xl rounded-[20px] border border-black hover:opacity-90 transition-opacity shrink-0 mr-4"
           >
             Say hello
           </a>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button with extra right padding */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="sm:hidden ml-auto p-0 bg-transparent border-none cursor-pointer"
+            className="sm:hidden ml-auto p-0 pr-4 bg-transparent border-none cursor-pointer"
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
           >
